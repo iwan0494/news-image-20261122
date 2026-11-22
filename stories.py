@@ -1,132 +1,112 @@
-"""Data for the ATLAS-35 poster: 35 verified stories from 22 November 2026.
+"""Data for the 22 November 2026 poster (round 3).
 
-Every headline and number here was verified against wire reporting
-(Reuters, AP, AFP, CNN, WSJ, gov.uk, Ukrainian Air Force, USGS).
-Nothing on the poster may add a number or a detail that is not in
-this file.
+Seven biggest stories of the day. Each story carries a big headline,
+a one-sentence tagline that explains it in plain words, a certainty
+label, a source, and a key number. Text only; the poster script draws
+everything else.
 """
 
-HEROES = [
+MASTHEAD = "THE WORLD IN ONE DAY"
+DATE_LINE = "SUNDAY, 22 NOVEMBER 2026"
+SUBHEAD = "Seven stories from one Sunday — war, climate, trade, markets, quakes."
+
+STATS = [
+    ("2 RADARS", "Iran claims US hits in Bahrain"),
+    ("KH-101", "Russian missile confirmed in Poland"),
+    ("-3,7%", "S&P 500 into correction"),
+    ("98,5%", "EU-Indonesia tariffs gone"),
+]
+
+# Each story: number, kicker, headline, tagline, certainty label, source, icon.
+STORIES = [
     {
         "num": 1,
-        "kicker": "CLIMATE \u00b7 ANTALYA",
-        "headline": "COP31 talks set to collapse",
-        "fact": "No new text \u2014 talks set to collapse",
+        "kicker": "GULF CRISIS · BAHRAIN",
+        "headline": "IRAN STRIKES US BASES IN BAHRAIN",
+        "tagline": "Tehran claims hits on two Patriot radars; Bahrain says a "
+                   "civilian site burned and tankers were hit near Hormuz.",
+        "label": "CLAIM",
+        "source": "Reuters / Bahrain officials",
+        "icon": "radar",
     },
     {
         "num": 2,
-        "kicker": "TRADE \u00b7 BRUSSELS",
-        "headline": "EU and Indonesia sign trade deal",
-        "fact": "98.5% of tariffs gone",
+        "kicker": "SECURITY · POLAND",
+        "headline": "NATO VOWS TO DEFEND EVERY INCH OF POLAND",
+        "tagline": "A Russian Kh-101 missile is confirmed on Polish soil; "
+                   "Rutte in Warsaw: the alliance stands with Poland.",
+        "label": "CONFIRMED",
+        "source": "Polish prosecutors / NATO",
+        "icon": "missile",
     },
     {
         "num": 3,
-        "kicker": "SECURITY \u00b7 POLAND",
-        "headline": "Russian missiles land in Poland",
-        "fact": "2 missiles + 1 drone",
+        "kicker": "CLIMATE · ANTALYA",
+        "headline": "COP31 IN OVERTIME — THE FIGHT IS OVER TWO WORDS",
+        "tagline": "Talks run into a second day past deadline; the draft never "
+                   "says \u201cfossil fuels\u201d — and 130 countries want the "
+                   "words back.",
+        "label": "CONFIRMED",
+        "source": "Reuters / AP",
+        "icon": "globe",
+    },
+    {
+        "num": 4,
+        "kicker": "MARKETS · NEW YORK",
+        "headline": "STOCKS IN CORRECTION AS TECH ROUT DEEPENS",
+        "tagline": "The S&P 500 sinks 3.7% and the Nasdaq wipes out its "
+                   "2026 gains in an AI-led sell-off.",
+        "label": "CONFIRMED",
+        "source": "Market wires",
+        "icon": "chart",
+    },
+    {
+        "num": 5,
+        "kicker": "TRADE · BRUSSELS",
+        "headline": "EU AND INDONESIA SIGN LANDMARK TRADE DEAL",
+        "tagline": "Ten years of talks end — duties gone on 98.5% of goods, "
+                   "covering 730 million people.",
+        "label": "CONFIRMED",
+        "source": "European Commission / DW",
+        "icon": "trade",
+    },
+    {
+        "num": 6,
+        "kicker": "CARTELS · SINALOA",
+        "headline": "MEXICO CAPTURES FBI MOST-WANTED \u2018EL CHAPO ISIDRO\u2019",
+        "tagline": "The $5m-reward fugitive is held in Sinaloa; 11 killed "
+                   "as cartel gunmen fought back.",
+        "label": "CONFIRMED",
+        "source": "AP / FBI",
+        "icon": "cuffs",
+    },
+    {
+        "num": 7,
+        "kicker": "QUAKE · PERU",
+        "headline": "PERU QUAKE 6.7 SHAKES THE ANDES",
+        "tagline": "Fifteen hurt and 127 homes damaged in Junín and Pasco; "
+                   "the tremor is felt across Lima.",
+        "label": "CONFIRMED",
+        "source": "USGS",
+        "icon": "quake",
     },
 ]
 
-# Each band: label, tab colour, and its one-line stories.
-# A story line is "N. Headline \u2014 fact" rendered in two columns.
-BANDS = [
-    {
-        "label": "EUROPE",
-        "color": (30, 58, 95),
-        "stories": [
-            (4, "Denmark expels Russian defence attach\u00e9", "Kyivstoner plot"),
-            (5, "Gen Z protests sweep 25 European countries", "25+ countries"),
-            (6, "Ex-police chief De Gennaro found dead", "aged 78"),
-            (7, "UK gives Ukraine 1,000 drones", "\u00a3260M package"),
-            (8, "COP31 draft concedes 1.5\u00b0C overshoot", "limit to be passed"),
-            (9, "UN: 128 states agree path on killer robots", "by 2028"),
-            (10, "Italian transport workers strike", "trains disrupted"),
-        ],
-    },
-    {
-        "label": "WAR IN UKRAINE",
-        "color": (185, 28, 28),
-        "stories": [
-            (11, "Kerch Bridge road arch dropped into sea", "227-m arch down"),
-            (12, "Russia launches 186 drones overnight", "161 of 186 downed"),
-            (13, "400-drone barrage kills 8 in Kyiv", "110 missiles"),
-            (14, "Strike hits Kryvyi Rih", "2 killed, 60 wounded"),
-            (15, "Dymer block hit, 14 missing", "14 missing"),
-            (16, "Sparta II ablaze in Gulf of Finland", "crew evacuated"),
-            (17, "Blasts reported over Kaliningrad", "first strikes on exclave"),
-        ],
-    },
-    {
-        "label": "MIDDLE EAST & AFRICA",
-        "color": (120, 72, 20),
-        "stories": [
-            (18, "Iran claims strikes on US radars", "2 US radars targeted"),
-            (19, "Gaza food vehicle strike kills 3", "3 killed"),
-            (20, "Sudan: Tasis seizes Bau, Blue Nile", "Bau seized"),
-            (21, "Ethiopia\u2013Eritrea troops massing", "border build-up"),
-        ],
-    },
-    {
-        "label": "ASIA\u2013PACIFIC",
-        "color": (13, 92, 70),
-        "stories": [
-            (22, "Indonesia factory fire", "3 dead, 36 missing"),
-            (23, "Trump, Xi & Putin meet in Shenzhen", "first-ever trilateral"),
-            (24, "Myanmar quake 4.1", "magnitude 4.1"),
-            (25, "Timor-Leste quake 6.8, no tsunami", "magnitude 6.8"),
-            (26, "Hong Kong Election Committee voting begins", "voting begins"),
-        ],
-    },
-    {
-        "label": "AMERICAS",
-        "color": (90, 40, 110),
-        "stories": [
-            (27, "Peru quake 6.7", "15 hurt, 127 homes hit"),
-            (28, "\u2018El Chapo Isidro\u2019 captured", "$5M reward"),
-            (29, "Trump warns AI data centres abroad", "\u201ctremendous tax\u201d"),
-            (30, "Brazil Senate passes fiscal package", "45\u201331 vote"),
-        ],
-    },
-    {
-        "label": "MARKETS & SPORT",
-        "color": (150, 90, 0),
-        "stories": [
-            (31, "Anthropic\u2019s record $81.3B IPO", "largest ever"),
-            (32, "Tech crash: Nasdaq \u22125.3%", "S&P in correction"),
-            (33, "Nvidia dives 14%", "\u221214%"),
-            (34, "Verstappen wins Las Vegas GP", "wins by 0.639s"),
-            (35, "Leeds stun Chelsea 4\u20131", "first win there since 1999"),
-        ],
-    },
-]
-
-# Numbered dots on the schematic world map: (story num, lon, lat, label).
-MAP_DOTS = [
-    (1, 30.7, 36.9, "Antalya"),
-    (2, 6.0, 50.0, "Brussels"),
-    (3, 22.0, 50.0, "Poland"),
-    (7, -2.0, 52.5, "London"),
-    (11, 38.5, 43.5, "Kerch"),
-    (12, 30.5, 50.4, "Kyiv"),
-    (16, 25.0, 61.0, "Gulf of Finland"),
-    (18, 50.5, 26.0, "Bahrain"),
-    (19, 34.5, 31.5, "Gaza"),
-    (22, 106.0, -6.2, "Banten"),
-    (23, 114.0, 22.5, "Shenzhen"),
-    (26, 114.2, 22.3, ""),
-    (27, -76.0, -11.0, "Jun\u00edn"),
-    (28, -107.0, 25.0, "Sinaloa"),
-    (34, -115.1, 36.2, "Las Vegas"),
-]
-
-FOOTER_LINE1 = (
-    "SUNDAY 22 NOVEMBER 2026 \u2014 All 35 stories happened "
-    "or were first reported on this day."
+DATE_CHECK_TITLE = "DATE CHECK — SUNDAY 22 NOVEMBER 2026"
+DATE_CHECK_BODY = (
+    "Every story above happened or was first reported on this day. "
+    "Deliberately left out: the Trump–Xi–Putin Shenzhen nuclear pledge "
+    "(Thursday 19 Nov), the UN autonomous-weapons talks (Geneva, no "
+    "binding deal), and the Hong Kong Election Committee vote (local "
+    "election, not a world headline)."
 )
-FOOTER_LINE2 = (
-    "Sources: Reuters, AP, AFP, CNN, WSJ, gov.uk, Ukrainian Air Force, "
-    "USGS \u2014 22 November 2026."
+PRESS_TIME = "Press time: Sunday 22 November 2026, evening (UTC)."
+
+ALSO = (
+    "Also Sunday: 186 Russian drones over Ukraine overnight as the "
+    "Kryvyi Rih toll rises to 73 injured; a Russian ship burns in the "
+    "Gulf of Finland; a 4.1 quake in Myanmar."
 )
 
-TOTAL_STORIES = 35
-TOTAL_REGIONS = 7
+FOOTER_DATE = "SUNDAY 22 NOVEMBER 2026 — All seven stories happened or were first reported on this day."
+FOOTER_SOURCES = "Sources: Reuters, AP, USGS, European Commission, DW, FBI — 22 November 2026."
